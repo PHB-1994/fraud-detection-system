@@ -1,0 +1,8 @@
+cat > .gitignore <<'EOF'
+.idea/
+*.iml
+.gradle/
+**/build/
+.DS_Store
+Thumbs.db
+EOF

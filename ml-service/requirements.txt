@@ -1,0 +1,15 @@
+# AI/ML 라이브러리
+pandas==2.1.4
+numpy==1.26.2
+scikit-learn==1.3.2
+imbalanced-learn==0.11.0
+joblib==1.3.2
+
+# FastAPI 및 웹 서버
+fastapi==0.108.0
+uvicorn[standard]==0.25.0
+pydantic==2.5.3
+
+# 유틸리티
+python-multipart==0.0.6
+python-dotenv==1.0.0

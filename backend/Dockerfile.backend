@@ -1,0 +1,23 @@
+# Stage 1: Build
+FROM gradle:8.5-jdk17 AS build
+WORKDIR /app
+
+# Gradle 래퍼 및 설정 파일 복사
+COPY build.gradle settings.gradle ./
+COPY src ./src
+
+# 애플리케이션 빌드
+RUN gradle build --no-daemon -x test
+
+# Stage 2: Runtime
+FROM eclipse-temurin:17-jre-alpine
+WORKDIR /app
+
+# 빌드된 JAR 파일 복사
+COPY --from=build /app/build/libs/*.jar app.jar
+
+# 포트 노출
+EXPOSE 8080
+
+# 애플리케이션 실행
+ENTRYPOINT ["java", "-jar", "app.jar"]
